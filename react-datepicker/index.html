@@ -9,25 +9,75 @@
 		</script>
 		<link rel="stylesheet" type="text/css" href="css/amazeui.min.css">
 		<style type="text/css">
+			body { padding: 20px;}
 			.am-current{ border: #efefef 1px solid; background-color: #A6CFE4; } .am-current:hover
 			{ background-color: #D4E5EE !important; }
+			.demo {float: left; margin-right: 30px;}
 		</style>
 	</head>
 	<body>
-		<div id="example">
+		<div class="demo">
+			<h1>example1</h1>
+			<div id="example1">
+			</div>
+		</div>
+		<div class="demo">
+			<h1>example2</h1>
+			<div id="example2">
+			</div>
+		</div>
+		<div class="demo">
+			<h1>example3</h1>
+			<div id="example3">
+			</div>
 		</div>
 		<script type="text/javascript" src="js/datepicker.min.js">
 		</script>
 		<script type="text/javascript">
-			React.render(React.createElement(Datepicker, {
-				from: null,
-				to: null,
+
+			//to avoid conflict
+			var myDatepicker = Datepicker.noConflict();
+
+			React.render(React.createElement(myDatepicker, {
 				current: null,
 				onSelect: function(date) {
 					console.log(date);
 				}
-			}), document.getElementById('example'));
+			}), document.getElementById('example1'));
+
+			var test = new Date;
+			test.setFullYear(2008);
+			test.setMonth(4);
+			test.setDate(12);
+
+			React.render(React.createElement(myDatepicker, {
+				current: test,
+				panel: 2,
+				onSelect: function(date) {
+					console.log(date);
+				}
+			}), document.getElementById('example2'));
+
+			var weekDays = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"],
+				yearMonths = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+			myDatepicker.addLang("en", {
+				dayTitle: weekDays,
+				monthTitle: yearMonths,
+				dateTitle: function(year, month, day){
+					return year + " " + yearMonths[month - 1];
+				}
+			});
+
+			React.render(React.createElement(myDatepicker, {
+				current: null,
+				panel: 1,
+				lang: "en",
+				onSelect: function(date) {
+					console.log(date);
+				}
+			}), document.getElementById('example3'));
+
 		</script>
 	</body>
-
 </html>

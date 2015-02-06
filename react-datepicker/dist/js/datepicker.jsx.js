@@ -42,7 +42,7 @@ DateItemPrototype.getMonthDays = function(){
 };
 DateItemPrototype.format = function(fmt) {
 	var self = this, o = {
-		"M+": self.m,
+		"m+": self.m,
 		"d+": self.d,
 		"q+": Math.floor((self.m + 2) / 3)
 	};
@@ -388,7 +388,7 @@ var monthDays = [1, -2, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1],
 		    	from: null,
 		    	to: null,
 		    	current: new DateItem,
-		    	format: "yyyy-MM-dd",
+		    	format: "yyyy-mm-dd",
 		    	onSelect: null,
 		    	lang: "zh",
 		    	panel: 1
@@ -414,7 +414,7 @@ var monthDays = [1, -2, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1],
 		},
 		onSelect: function(current){
 			var self = this, callBack = self.props.onSelect;
-			typeof callBack === "function" && callBack(current);
+			typeof callBack === "function" && callBack(current.toDate());
 			self.setState({
 				visible: false,
 				current: current

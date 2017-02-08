@@ -8,16 +8,16 @@
 
     <link rel="shortcut icon" href="">
     <!--[if lte IE 8]>
-    <script src="./../node_modules/es5-shim/es5-shim.min.js"></script>
-    <script src="./../node_modules/es5-shim/es5-sham.min.js"></script>
+    <script src="./../libs/es5-shim.min.js"></script>
+    <script src="./../libs/es5-sham.min.js"></script>
     <![endif]-->
 </head>
 <body>
 <div id="container">
 </div>
-<script src="./../node_modules/react/dist/react-with-addons.js"></script>
-<script src="./../node_modules/react-dom/dist/react-dom.js"></script>
-<script src="./../dist/playground.min.js"></script>
+<script src="./../libs/react-with-addons.js"></script>
+<script src="./../libs/react-dom.js"></script>
+<script src="./../libs/project/playground.min.js"></script>
 <script type="text/plain" id="code">
 class Timer extends React.Component {
   constructor(props) {
@@ -52,7 +52,7 @@ ReactDOM.render(<Timer />, mountNode);
 <script>
     var TIMER_COMPONENT = document.getElementById('code').innerHTML.trim();
 
-    ReactDOM.render(React.createElement(ReactPlayground, {codeText: TIMER_COMPONENT}), document.getElementById('container'));
+    ReactDOM.render(React.createElement(ReactPlayground.default, {codeText: TIMER_COMPONENT}), document.getElementById('container'));
 </script>
 </body>
 </html>

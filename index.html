@@ -82,6 +82,10 @@ $ git checkout gh-pages
     </footer>
 </div>
 <script src="javascripts/scale.fix.js"></script>
-<script>console.log(window.devicePixelRatio);</script>
+<script>
+    var p = document.createElement("p");
+    p.innerHTML = window.devicePixelRatio;
+    document.body.appendChild(p);
+</script>
 </body>
 </html>
